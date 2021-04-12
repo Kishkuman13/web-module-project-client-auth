@@ -27,9 +27,14 @@ const FriendsList = () => {
       .catch(err => console.log(err))
   }
 
-  const addFriend = () => {
+  const addFriend = (e) => {
     e.preventDefault()
-    axiosWithAuth.post('http://localhost:5000/api/friends', friend)
+    const axios = axiosWithAuth()
+    axios.post('http://localhost:5000/api/friends', friend)
+    .then(res => {
+    console.log(res)
+    setFriends(res.data)
+    })
   }
 
   const handleChange = (e) => {
@@ -40,8 +45,8 @@ const FriendsList = () => {
   }
 
   return (
-    <div>
-      <div>
+    <div className='wrapper'>
+      <div className='add-friend'>
         <h2>Add Friend</h2>
         <form onSubmit={addFriend}>
           <label>
@@ -77,7 +82,7 @@ const FriendsList = () => {
           <button>Submit</button>
         </form>
       </div>
-      <div>
+      <div className='friends'>
         {
           friends &&
           friends.map((friend, index) => {

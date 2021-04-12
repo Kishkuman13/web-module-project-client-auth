@@ -5,6 +5,8 @@ import ProtectedRoute from './components/ProtectedRoute';
 import Login from './components/Login';
 import FriendsList from './components/FriendsList'
 
+import './App.css'
+
 function App() {
   const logout = () => {
     localStorage.removeItem('token')
@@ -15,17 +17,9 @@ function App() {
       <div className="App">
         <header>
           <nav>
-            <ul>
-              <li>
-                <Link to='/login'>Login</Link>
-              </li>
-              <li>
-                <Link onClick={logout}>Logout</Link>
-              </li>
-              <li>
-                <Link to='/friends'>View Friends</Link>
-              </li>
-            </ul>
+            <Link to='/login'>Login</Link>
+            <Link onClick={logout}>Logout</Link>
+            <Link to='/friends'>View Friends</Link>
           </nav>
         </header>
         <Switch>
